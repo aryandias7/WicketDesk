@@ -24,10 +24,15 @@ WicketBase is a full-stack web application built with Python (Flask) and MySQL t
 
 ## Screenshots
 
-
-| Login Page | Homepage | Admin Dashboard |
+### Public Interface
+| Homepage View 1 | Homepage View 2 | Player Details |
 | :---: | :---: | :---: |
-| ![Login Page](path/to/LoginPage.png) | ![Homepage](path/to/Homepage.png) | ![Admin Dashboard](path/to/AdminDashboard.png) |
+| ![Home 1](screenshots/home_1.png) | ![Home 2](screenshots/home_2.png) | ![Home 3](screenshots/home_3.png) |
+
+### Admin Panel
+| Login Page | Admin Dashboard | Management View |
+| :---: | :---: | :---: |
+| ![Login](screenshots/login.png) | ![Admin 1](screenshots/admin_dash_1.png) | ![Admin 2](screenshots/admin_dash_2.png) |
 
 ## Tech Stack
 
