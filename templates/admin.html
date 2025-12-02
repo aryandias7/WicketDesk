@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}" />
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <h1 class="logo">Admin</h1>
+            <nav class="sidebar-nav">
+                <a href="#players">Players</a>
+                <a href="#teams">Teams</a>
+                <a href="#coaches">Coaches</a>
+                <a href="#matches">Matches</a>
+                <a href="#umpires">Umpires</a>
+                <a href="/">Go to Public Site</a>
+            </nav>
+        </aside>
+        
+        <main id="main-content"></main>
+    </div>
+
+    <div id="form-modal" class="modal-backdrop" style="display:none;">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+    
+    <script>
+        // The change is on this line. We wrap the output in quotes and then parse it.
+        const PRELOADED_DATA = JSON.parse('{{ preloaded_data|tojson|safe }}');
+    </script>
+    <script src="{{ url_for('static', filename='js/admin_app.js') }}"></script>
+</body>
+</html>

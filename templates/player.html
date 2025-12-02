@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ player.player_name }} Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/details.css') }}">
+</head>
+<body>
+    <h1>{{ player.player_name }} Details</h1>
+    <table>
+        <tbody>
+            <tr>
+                <th>Player ID:</th>
+                <td>{{ player.player_id }}</td>
+            </tr>
+            <tr>
+                <th>Player Name:</th>
+                <td>{{ player.player_name }}</td>
+            </tr>
+            <tr>
+                <th>Type of Player:</th>
+                <td>{{ player.player_role }}</td>
+            </tr>
+            <tr>
+                <th>Country:</th>
+                <td>{{ player.team_name }}</td>
+            </tr>
+            <tr>
+                <th>Batting Style:</th>
+                <td>{{ player.bat }}</td>
+            </tr>
+            <tr>
+                <th>Bowling Style:</th>
+                <td>{{ player.bowl }}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket World Cup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Cricket Tournament Database</h1>
+            <p>Explore detailed profiles of players, teams, and match results from the world of cricket.</p>
+            <a href="#main-content" class="cta-button">Explore Now</a>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#players">Players</a></li>
+            <li><a href="#teams">Teams</a></li>
+            <li><a href="#matches">Matches</a></li>
+            <li><a href="#stadiums">Stadiums</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <!-- 1. Featured Players: Netflix-style Slider -->
+        <section id="players" class="content-section">
+            <h2>The Squad</h2>
+            <div class="player-section-wrapper" style="position: relative;">
+                <button class="scroll-btn left" onclick="scrollPlayers('left')">&#10094;</button>
+                <div class="player-section" id="playerSlider">
+                    <div class="player-slider">
+                        {% for player in players %}
+                        <a href="{{ url_for('player', player_id=player.player_id) }}" class="player-slide"
+                            style="background-image: url('{{ get_card_background('player', player.team_id) }}');">
+                            <div class="player-info">
+                                <h3>{{ player.player_name }}</h3>
+                                <p>{{ player.player_role }}</p>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <button class="scroll-btn right" onclick="scrollPlayers('right')">&#10095;</button>
+            </div>
+        </section>
+
+        <script>
+            function scrollPlayers(direction) {
+                const slider = document.getElementById('playerSlider');
+                const scrollAmount = 300; // Adjust scroll amount as needed
+                if (direction === 'left') {
+                    slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                } else {
+                    slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            }
+        </script>
+
+        <!-- 2. Participating Teams: Circular Grid -->
+        <section id="teams" class="content-section">
+            <h2>The League</h2>
+            <div class="team-grid">
+                {% for team in teams %}
+                <a href="{{ url_for('team', team_id=team.team_id) }}" class="team-link">
+                    <div class="team-circle"
+                        style="background-image: url('{{ get_card_background('team', team.team_id) }}');">
+                        <span class="team-name">{{ team.team_name }}</span>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- 3. Recent Matches: Vertical Timeline -->
+        <section id="matches" class="content-section">
+            <h2>Match Center</h2>
+            <div class="match-timeline">
+                {% for match in matches %}
+                <a href="{{ url_for('match', match_id=match.match_id) }}" class="match-row">
+                    <div class="match-date">{{ match.match_date }}</div>
+                    <div class="match-teams">
+                        {{ match.team_1_id }} <span class="match-vs">vs</span> {{ match.team_2_id }}
+                    </div>
+                    <div class="match-winner">
+                        Winner: {{ match.winner }}
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- 4. Venues: Grid Layout -->
+        <section id="stadiums">
+            <h2 style="text-align: center; margin: 60px 0 40px;">The Arenas</h2>
+            <div class="stadium-grid">
+                {% for stadium in stadiums %}
+                <a href="{{ url_for('stadium', stadium_id=stadium.stadium_id) }}" class="stadium-card"
+                    style="background-image: url('{{ get_card_background('stadium', stadium.stadium_id) }}');">
+                    <div class="stadium-overlay">
+                        <h3>{{ stadium.stadium_name }}</h3>
+                        <p>{{ stadium.city }}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
