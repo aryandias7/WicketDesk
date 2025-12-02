@@ -30,7 +30,7 @@ WicketBase is a full-stack web application built with Python (Flask) and MySQL t
 | ![Home 1](screenshots/home_1.png) | ![Home 2](screenshots/home_2.png) | ![Home 3](screenshots/home_3.png) |
 
 | Match Details | Stadiums | 
-| :---: | :---: | :---: |
+| :---: | :---: |
 | ![Home 4](screenshots/home_4.png) | ![Home 5](screenshots/home_5.png) | 
 
 ### Admin Panel
